@@ -1,7 +1,11 @@
-import PropTypes from "prop-types"
-import { useState } from "react"
+import PropTypes from "prop-types";
+import { useState } from "react";
 
-const Header = ({onSearch}) => {
+interface HeaderProps {
+  onSearch: (searchKey: string) => void;
+}
+
+const Header = ({onSearch}: HeaderProps) => {
   const [ textSearch, setTextSearch ] = useState('');
 
   return (

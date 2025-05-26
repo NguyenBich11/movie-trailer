@@ -10,7 +10,7 @@ function App() {
   const [ movieRate, setMovieRate ] = useState([]);
   const [ searchKey, setSearchKey ] = useState([]);
 
-  const handleSearch = async (searchKey) => {
+  const handleSearch = async (searchKey:string) => {
     setSearchKey([])
     try {
       const url = `https://api.themoviedb.org/3/search/movie?query=${searchKey}&include_adult=false&language=vi&page=1`;

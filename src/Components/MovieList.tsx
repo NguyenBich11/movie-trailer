@@ -4,6 +4,19 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { MovieContext } from '../Context/MovieProvider';
 
+
+interface Movie {
+  id: number;
+  title?: string;
+  original_title?: string;
+  poster_path: string;
+}
+
+interface MovieListProps {
+  title: string;
+  data: Movie[];
+}
+
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -24,7 +37,7 @@ const responsive = {
   }
 };
 
-const MovieList = ({ title, data }) => {
+const MovieList = ({ title, data }: MovieListProps) => {
   const { fetchTrailer } = useContext(MovieContext);
 
   return (

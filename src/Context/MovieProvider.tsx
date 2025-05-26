@@ -1,7 +1,23 @@
-import { Children, createContext, useState} from 'react';
+import { createContext, useState } from 'react';
+import type {ReactNode} from 'react';
 import Modal from 'react-modal';
 import YouTube from 'react-youtube';
 import PropTypes from 'prop-types';
+
+// Type của context value
+interface MovieContextType {
+  fetchTrailer: (id: number) => void;
+}
+
+// Tạo context có kiểu cụ thể
+const MovieContext = createContext<MovieContextType>({
+  fetchTrailer: () => {},
+});
+
+// Props của MovieProvider
+interface MovieProviderProps {
+  children: ReactNode;
+}
 
 
 const opts = {
@@ -13,13 +29,11 @@ const opts = {
   },
 };
 
-const MovieContext = createContext();
-
-const MovieProvider = ({children}) => {
+const MovieProvider = ({children}:MovieProviderProps) => {
   const [ modalIsOpen, setModalIsOpen ] = useState(false);
   const [ trailerKey, setTrailerKey ] = useState("");
 
-  const fetchTrailer = async(id) => {
+  const fetchTrailer = async(id:number) => {
     setTrailerKey('');
   
     try {

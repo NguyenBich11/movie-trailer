@@ -2,7 +2,19 @@ import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { MovieContext } from '../Context/MovieProvider';
 
-const MovieSearch = ({title, data}) => {
+interface Movie {
+  id: number;
+  title?: string;
+  original_title?: string;
+  poster_path: string;
+}
+
+interface MovieSearchProps {
+  title: string;
+  data: Movie[];
+}
+
+const MovieSearch = ({title, data}: MovieSearchProps) => {
     const { fetchTrailer } = useContext(MovieContext);
   return (
     <div className='text-white p-10 mb-10'>
